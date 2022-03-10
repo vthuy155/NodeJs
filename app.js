@@ -21,6 +21,7 @@ const server = http.createServer((req, res) => {
         res.setHeader('Content-Type', 'text/html');
         res.write("<h1>News Page</>");
         res.end;
+        // abc
     }
 });
 // B3: Lắng nghe cổng thực thi
