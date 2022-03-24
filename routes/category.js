@@ -4,9 +4,9 @@ import { createCategory, deleteCategory, listCategory, listCategoryDetail, updat
 const express = require('express');
 const route = express.Router();
 
-route.get('/categories/:id', listCategoryDetail);
-route.get('/categories', listCategory);
-route.post('/categories', createCategory);
-route.delete('/categories/:id', deleteCategory);
-route.put('/categories/:id', updateCategory);
+route.get('/category/:id', listCategoryDetail);
+route.get('/category', listCategory);
+route.post('/category', createCategory);
+route.delete('/category/:id', deleteCategory);
+route.put('/category/:id', updateCategory);
 export default route;
