@@ -1,4 +1,6 @@
-import { createProduct, deleteProduct, listProduct, listProductDetail, updateProduct } from '../controllers/products';
+import { createProduct, deleteProduct, listNewsProduct, listProduct, listProductDetail, updateProduct } from '../controllers/products';
+import { userById } from '../controllers/user';
+import { isAuth, requiredSignin } from '../middlewares/checkAuth';
 
 const express = require('express');
 const route = express.Router();
@@ -10,7 +12,9 @@ const products = [
 ]
 route.get('/products/:id', listProductDetail);
 route.get('/products', listProduct);
-route.post('/products', createProduct);
+route.get('/newproduct', listNewsProduct)
+route.post('/products/:userId',requiredSignin, isAuth ,createProduct);
 route.delete('/products/:id', deleteProduct);
 route.put('/products/:id', updateProduct);
+route.param("userId", userById)
 export default route;

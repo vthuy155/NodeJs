@@ -1,15 +1,26 @@
 import Product from "../models/products"
+import Category from "../models/category"
+import category from "../models/category"
 // const products = [
 //     {id:1, name:"Product 1"},
 //     {id:2, name:"Product 2"},
 //     {id:3, name:"Product 3"}
 
 // ]
-
+export const listNewsProduct =async (request, response) =>{
+    try{
+        const product =await Product.find({}).limit(4).sort( { createdAt: -1 } ).exec()
+        response.json(product)
+    }catch(error){
+        response.status(400).json({message:"Loi khong the hien thi"})
+    }
+    // response.json(products)
+}
 export const listProduct =async (request, response) =>{
     try{
         const product =await Product.find({}).exec()
-        response.json(product)
+        const category = await Category.find({product}).select("-products").exec()
+        response.json({product, category: category})
     }catch(error){
         response.status(400).json({message:"Loi khong the hien thi"})
     }
