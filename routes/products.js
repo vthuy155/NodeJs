@@ -1,4 +1,4 @@
-import { createProduct, deleteProduct, listNewsProduct, listProduct, listProductDetail, updateProduct } from '../controllers/products';
+import { createProduct, deleteProduct, listAZProduct, listMmProduct, listmMProduct, listNewsProduct, listProduct, listProduct1, listProductDetail, listZAProduct, pagination, updateProduct } from '../controllers/products';
 import { userById } from '../controllers/user';
 import { isAuth, requiredSignin } from '../middlewares/checkAuth';
 
@@ -11,8 +11,14 @@ const products = [
 
 ]
 route.get('/products/:id', listProductDetail);
+route.get('/products1', listProduct)
+route.get('/productspage/:page', pagination)
 route.get('/products', listProduct);
-route.get('/newproduct', listNewsProduct)
+route.get('/productaz', listAZProduct);
+route.get('/productza', listZAProduct);
+route.get('/productminm', listmMProduct);
+route.get('/productmaxm', listMmProduct);
+route.get('/newproduct', listNewsProduct);
 route.post('/products/:userId',requiredSignin, isAuth ,createProduct);
 route.delete('/products/:id', deleteProduct);
 route.put('/products/:id', updateProduct);

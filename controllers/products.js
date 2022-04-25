@@ -16,11 +16,67 @@ export const listNewsProduct =async (request, response) =>{
     }
     // response.json(products)
 }
+export const pagination =async (request, response) =>{
+    try{
+        let perPage = 5;
+        let page = request.params.page || 1;
+        const product =await Product.find({}).skip((perPage * page) - perPage).limit(perPage).exec()
+        response.json(product)
+    }catch(error){
+        response.status(400).json({message:"Loi khong the hien thi"})
+    }
+    // response.json(products)
+}
+export const listAZProduct =async (request, response) =>{
+    try{
+        const product =await Product.find({}).sort( { name: -1 } ).exec()
+        response.json(product)
+    }catch(error){
+        response.status(400).json({message:"Loi khong the hien thi"})
+    }
+    // response.json(products)
+}
+export const listZAProduct =async (request, response) =>{
+    try{
+        const product =await Product.find({}).sort( { name: 0 } ).exec()
+        response.json(product)
+    }catch(error){
+        response.status(400).json({message:"Loi khong the hien thi"})
+    }
+    // response.json(products)
+}
+export const listmMProduct =async (request, response) =>{
+    try{
+        const product =await Product.find({}).sort( { price: 0} ).exec()
+        response.json(product)
+    }catch(error){
+        response.status(400).json({message:"Loi khong the hien thi"})
+    }
+    // response.json(products)
+}
+export const listMmProduct =async (request, response) =>{
+    try{
+        const product =await Product.find({}).sort( { price: -1} ).exec()
+        response.json(product)
+    }catch(error){
+        response.status(400).json({message:"Loi khong the hien thi"})
+    }
+    // response.json(products)
+}
 export const listProduct =async (request, response) =>{
     try{
         const product =await Product.find({}).exec()
         const category = await Category.find({product}).select("-products").exec()
         response.json({product, category: category})
+    }catch(error){
+        response.status(400).json({message:"Loi khong the hien thi"})
+    }
+    // response.json(products)
+}
+export const listProduct1 =async (request, response) =>{
+    try{
+        const product =await Product.find({}).exec()
+        response.json(product)
     }catch(error){
         response.status(400).json({message:"Loi khong the hien thi"})
     }
