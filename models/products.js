@@ -24,10 +24,10 @@ const productSchema = new mongoose.Schema({
     description:{
         type: String
     },
-    category:{
-        type: ObjectId,
-        ref: 'Category'
-    },
+    // category:{
+    //     type: ObjectId,
+    //     ref: 'Category'
+    // },
     status: {
         type: Number,
         default: 0
