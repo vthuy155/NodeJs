@@ -19,6 +19,20 @@ export const listCategoryDetail =async (request, response) =>{
         const products = await Product.find({category}).select("-category").exec()
 
         response.json({ category, products: products })
+        // response.json(category)
+    }catch(error){
+        response.status(400).json({message:"Loi khong the hien thi"})
+    }
+}
+export const DetailCate =async (request, response) =>{
+
+    try{
+        const category =await Category.findOne({_id:request.params.id}).exec()
+        // const product = await Product.find({category}).exec()
+        // const product = await Product.find({category}).populate("category").exec()
+
+        // response.json({ category, products: products })
+        response.json(category)
     }catch(error){
         response.status(400).json({message:"Loi khong the hien thi"})
     }

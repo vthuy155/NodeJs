@@ -9,7 +9,7 @@ import category from "../models/category"
 // ]
 export const listNewsProduct =async (request, response) =>{
     try{
-        const product =await Product.find({}).limit(4).sort( { createdAt: -1 } ).exec()
+        const product =await Product.find({}).limit(14).sort( { createdAt: -1 } ).exec()
         response.json(product)
     }catch(error){
         response.status(400).json({message:"Loi khong the hien thi"})
@@ -66,8 +66,9 @@ export const listMmProduct =async (request, response) =>{
 export const listProduct =async (request, response) =>{
     try{
         const product =await Product.find({}).exec()
-        const category = await Category.find({product}).select("-products").exec()
-        response.json({product, category: category})
+        // const category = await Category.find({product}).select("-products").exec()
+        // response.json({product, category: category})
+        response.json(product)
     }catch(error){
         response.status(400).json({message:"Loi khong the hien thi"})
     }

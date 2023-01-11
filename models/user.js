@@ -2,15 +2,15 @@ import mongoose, { Schema} from "mongoose";
 import { createHmac} from 'crypto';
 import { v4 as uuidv4 } from 'uuid';
 const userSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
     email: {
         type: String,
         required: true
     },
     password: {
+        type: String,
+        required: true
+    },
+    phone: {
         type: String,
         required: true
     },

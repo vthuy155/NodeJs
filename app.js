@@ -16,9 +16,9 @@ app.use("/api", category)
 app.use(newsRoute);
 app.use("/api", authRoute);
 
-mongoose.connect('mongodb://127.0.0.1:27017/we16307');
+mongoose.connect('mongodb://127.0.0.1:27017/api_famework');
 // B3: Lắng nghe cổng thực thi
-const port = 3001;
+const port = 3000;
 app.listen(port, () => {
     console.log(`Server is running on ${port}`);
 });

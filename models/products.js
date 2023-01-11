@@ -5,20 +5,32 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    price:{
+    originalPrice:{
         type: Number,
         required: true
+    },
+    saleOffPrice:{
+        type: Number
     },
     image:{
         type: String
     },
-    desc:{
-        type: String,
-        required: true
+    feature:{
+        type: String
+    },
+    shortDesc:{
+        type: String
+    },
+    description:{
+        type: String
     },
     category:{
         type: ObjectId,
         ref: 'Category'
+    },
+    status: {
+        type: Number,
+        default: 0
     }
 }, {timestamps: true})
 export default mongoose.model("Product", productSchema)

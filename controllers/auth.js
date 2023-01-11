@@ -1,7 +1,7 @@
 import User from '../models/user';
 import jwt from 'jsonwebtoken'
 export const register = async (req, res) => {
-    const { email ,name, password} = req.body;
+    const { email ,phone, password} = req.body;
     try {
         const existUser = await User.findOne({email}).exec();
         if(existUser){
@@ -9,12 +9,12 @@ export const register = async (req, res) => {
                 message: "Tài khoản đã tồn tại"
             })
         }
-        const user = await new User({email, name, password}).save();
+        const user = await new User({email, phone, password}).save();
         res.json({
             user: {
                 _id: user._id,
                 email: user.email,
-                name: user.name
+                phone: user.phone
             }
         });
     } catch (error) {
@@ -42,7 +42,7 @@ export const login = async (req,res)=>{
         user:{
             _id:user._id,
             email:user.email,
-            name:user.name,
+            phone:user.phone,
             role: user.role
         }
     })

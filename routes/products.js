@@ -19,8 +19,8 @@ route.get('/productza', listZAProduct);
 route.get('/productminm', listmMProduct);
 route.get('/productmaxm', listMmProduct);
 route.get('/newproduct', listNewsProduct);
-route.post('/products/:userId',requiredSignin, isAuth ,createProduct);
+route.post('/products', createProduct);
 route.delete('/products/:id', deleteProduct);
-route.put('/products/:id', updateProduct);
+route.patch('/products/:id', updateProduct);
 route.param("userId", userById)
 export default route;
