@@ -15,8 +15,7 @@ app.use("/api",productDetail);
 app.use("/api", category)
 app.use(newsRoute);
 app.use("/api", authRoute);
-
-mongoose.connect('mongodb://127.0.0.1:27017/api_famework');
+mongoose.connect('mongodb+srv://mydatath:changlaai1@cluster0newth.trm5bfm.mongodb.net/?retryWrites=true&w=majority');
 // B3: Lắng nghe cổng thực thi
 const port = 3000;
 app.listen(port, () => {
